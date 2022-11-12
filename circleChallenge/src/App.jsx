@@ -34,6 +34,9 @@ function App() {
 
   };
 
+  const recreateAll = () => {
+    setCoordinates([...coordinates,...redoCircle])
+  }
   return (
     <>
       <div onClick={(e) => showPosition(e)} className="App">
@@ -48,6 +51,7 @@ function App() {
       </div>
       <button disabled={coordinates.length === 0} onClick={deleteCircle}>UNDO</button>
       <button disabled={redoCircle.length === 0} onClick={recreateCircle}>REDO</button>
+      <button disabled={redoCircle.length === 0} onClick={recreateAll}>REDO ALL</button>
     </>
   );
 }
