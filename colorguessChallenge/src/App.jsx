@@ -13,7 +13,7 @@ function App() {
     setFieldColor(newColor)
     setRightChoice(newColor)
   },[nextRound])
-  const possibleAnswers = [rightChoice,getRandomHexColor(),getRandomHexColor().sort((a, b) => 0.5 - Math.random())]
+  const possibleAnswers = [rightChoice,getRandomHexColor(),getRandomHexColor().sort((a, b) => 0.5 - Math.random())] // shuffles array for randomness
 
   const checkIfCorrect = (e) => {
     e.target.innerHTML === fieldColor ? console.log("right Answer") : console.log("wrong answer")
