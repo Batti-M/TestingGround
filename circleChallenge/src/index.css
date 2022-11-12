@@ -1,0 +1,90 @@
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 24px;
+  font-weight: 400;
+  box-sizing: border-box;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+}
+
+.App{
+  width: 100%vw;
+  height: 50vh;
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px solid #555555;
+  position: relative;
+}
+
+.circle{
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: aqua;
+}
+
+/* from here its css from testing events */
+.preview{
+  font-size: 2rem;
+  border: 1px solid grey;
+  width: 50%
+}
+
+form > *{ 
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 2rem;
+  width: 300px
+}
+input{
+  padding: 1rem;
+}
+button{
+  padding: 1rem 2rem;
+}
+
+.information {
+  font-size: 1.75em;
+  color: blue;
+  cursor: pointer;
+}
+
+.wrapper button.information {
+   border: none;
+}
+
+.information-wrapper {
+  position: relative;
+}
+
+.popup {
+   position: absolute;
+   background: rgb(61, 58, 58);
+   border: 1px darkgray solid;
+   padding: 30px;
+   top: 270px;
+   left: 0px;
+}
+
+.preview {
+   border: 1px darkgray solid;
+   padding: 10px;
+}
+
+.wrapper {
+   display: flex;
+   flex-direction: column;
+   padding: 20px;
+   text-align: left;
+}
+
+.wrapper button {
+   background: none;
+   border: 1px black solid;
+   margin-top: 10px;
+}
