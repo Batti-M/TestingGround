@@ -4,10 +4,10 @@ import { useState } from "react";
 
 function App() {
   const [coordinates, setCoordinates] = useState([]);
+  const [redoCircle,setRedoCircle] = useState([])
 
   const showPosition = (e) => {
     const { clientX, clientY } = e;
-    console.log(e.target.offsetLeft);
     setCoordinates((prev) => [
       ...prev,
       {
@@ -19,18 +19,25 @@ function App() {
 
   const deleteCircle = () => {
     const newCircleArray = [...coordinates];
-    newCircleArray.pop();
+    const deletedCircle = newCircleArray.pop() 
+    setRedoCircle([...redoCircle,deletedCircle])
     setCoordinates(newCircleArray);
-  };
 
-  const redoCircle = () => {
-    console.log("works");
+  };
+ 
+  
+  const recreateCircle = () => {
+    const newRedoCircle = [...redoCircle]
+    const deletedCircle = newRedoCircle.pop()
+    setCoordinates([...coordinates, deletedCircle])
+    setRedoCircle(newRedoCircle)
+
   };
 
   return (
     <>
       <div onClick={(e) => showPosition(e)} className="App">
-        <p>hi </p>
+        
         {coordinates.map((coord, index) => (
           <div
             key={index}
@@ -39,8 +46,8 @@ function App() {
           ></div>
         ))}
       </div>
-      <button onClick={deleteCircle}>UNDO</button>
-      <button onClick={redoCircle}>REDO</button>
+      <button disabled={coordinates.length === 0} onClick={deleteCircle}>UNDO</button>
+      <button disabled={redoCircle.length === 0} onClick={recreateCircle}>REDO</button>
     </>
   );
 }
