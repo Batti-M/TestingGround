@@ -3,30 +3,29 @@ import { useEffect,useState } from 'react'
 
 function App() {
   const [fieldColor, setFieldColor] = useState("#151515")
-  const [rightChoice,setRightChoice] = useState(false)
+  const [rightAnswer,setRightAnswer] = useState(false)
   const [nextRound,setNextRound] = useState(0)
 
   const getRandomHexColor = () => `#${Math.floor(Math.random()*0xffffff).toString(16).padEnd(6, "0")}`
   const newColor = getRandomHexColor()
   
-  useEffect( () => {
-    setFieldColor(newColor)
-    setRightChoice(newColor)
-  },[nextRound])
-  const possibleAnswers = [rightChoice,getRandomHexColor(),getRandomHexColor()].sort((a, b) => 0.5 - Math.random()) // shuffles array for randomness
+  
+  const possibleAnswers = [fieldColor,getRandomHexColor(),getRandomHexColor()].sort((a, b) => 0.5 - Math.random()) // shuffles array for randomness return {}
+    
 
   const checkIfCorrect = (e) => {
-    e.target.innerHTML === fieldColor ? console.log("right Answer") : console.log("wrong answer")
-      
+    e.target.innerHTML === fieldColor ? setRightAnswer(true) : e.target.style.backgroundColor = "red"
+    
   }
   return (
     <div className="App">
-      <div className='colorfield' onClick={() => setNextRound(prev => prev+1)} style={{backgroundColor:`${fieldColor}`}}><span>{fieldColor}</span></div>
+      <div className='colorfield' onClick={ () => {setFieldColor(newColor);setRightAnswer(false)}} style={{backgroundColor:`${fieldColor}`}}></div>
       <div className='buttonWrapper'>
-        <button onClick={(e) => checkIfCorrect(e)}>{possibleAnswers[0]}</button>
-        <button onClick={(e) => checkIfCorrect(e)}>{possibleAnswers[1]}</button>
-        <button onClick={(e) => checkIfCorrect(e)}>{possibleAnswers[2]}</button>
+      {!rightAnswer &&  <button onClick={(e) => checkIfCorrect(e)}>{possibleAnswers[0]}</button>}
+     { !rightAnswer &&  <button onClick={(e) => checkIfCorrect(e)}>{possibleAnswers[1]}</button>}
+     { !rightAnswer &&  <button onClick={(e) => checkIfCorrect(e)}>{possibleAnswers[2]}</button>}
       </div>  
+      {rightAnswer ? <p>You are right!</p> : <p>False!</p>}
     </div>
   )
 }
