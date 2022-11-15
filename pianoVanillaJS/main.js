@@ -1,6 +1,6 @@
 import './style.css'
 
-async function createPiano(){
+function createPiano(){
 
   const PIANOKEYS = ["A","S","D","F","G","H","J","K","L"]
   const ALLKEYS = PIANOKEYS.map( (key,index) => 
@@ -33,8 +33,50 @@ const playMouseSound = (e,key) => {
  
   }
 const playKeyboardSound = (e) => {
+  
+  const getName = (e) => e.code
+  
+  console.log(e)
+  if(getName(e) === "KeyA" ){
+    let audio = new Audio(`/sounds/key01.mp3`)
+    audio.play()
+  }
+  if(getName(e) === "KeyS" ){
+    let audio = new Audio(`/sounds/key02.mp3`)
+    audio.play()
+  }
+  if(getName(e) === "KeyD" ){
+    let audio = new Audio(`/sounds/key03.mp3`)
+    audio.play()
+  }
+  if(getName(e) === "KeyF" ){
+    let audio = new Audio(`/sounds/key04.mp3`)
+    audio.play()
+  }
+  if(getName(e) === "KeyG" ){
+    let audio = new Audio(`/sounds/key05.mp3`)
+    audio.play()
+  }
+  if(getName(e) === "KeyH" ){
+    let audio = new Audio(`/sounds/key06.mp3`)
+    audio.play()
+  }
 
+  if(getName(e) === "KeyJ" ){
+    let audio = new Audio(`/sounds/key07.mp3`)
+    audio.play()
+  }
+  if(getName(e) === "KeyK" ){
+    let audio = new Audio(`/sounds/key08.mp3`)
+    audio.play()
+  }
+  if(getName(e) === "KeyL" ){
+    let audio = new Audio(`/sounds/key09.mp3`)
+    audio.play()
+  }
+  if(getName(e) === "KeyM" ){
+    let audio = new Audio(`/sounds/key10.mp3`)
+    audio.play()
+  }
 }
-  window.addEventListener("keydown", function(e){
-    console.log(e)
-  })
+  window.addEventListener("keydown",(e) => playKeyboardSound(e))
