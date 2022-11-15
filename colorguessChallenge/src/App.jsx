@@ -4,7 +4,7 @@ import { useEffect,useState } from 'react'
 function App() {
   const [fieldColor, setFieldColor] = useState("#151515")
   const [rightAnswer,setRightAnswer] = useState(false)
-  const [nextRound,setNextRound] = useState(0)
+  
 
   const getRandomHexColor = () => `#${Math.floor(Math.random()*0xffffff).toString(16).padEnd(6, "0")}`
   const newColor = getRandomHexColor()
@@ -25,7 +25,7 @@ function App() {
      { !rightAnswer &&  <button onClick={(e) => checkIfCorrect(e)}>{possibleAnswers[1]}</button>}
      { !rightAnswer &&  <button onClick={(e) => checkIfCorrect(e)}>{possibleAnswers[2]}</button>}
       </div>  
-      {rightAnswer ? <p>You are right!</p> : <p>False!</p>}
+      {rightAnswer ? <p>You are right!</p> : ""}
     </div>
   )
 }
