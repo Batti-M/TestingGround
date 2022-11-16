@@ -11,8 +11,9 @@ const createClock = () => {
   document.body.innerHTML = clock
   setInterval( () => {
     const secondHand = document.querySelector(".seconds")
-    const clockDeg = Number(count +=  6)
+    const clockDeg = Number(count +=  6) // 360deg/60 -> 6deg per 1000ms
     secondHand.style.rotate= `${clockDeg}deg`
     console.log(clockDeg)
   },1000)
 }
+// minutes and hours coming soon
