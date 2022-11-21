@@ -7,7 +7,7 @@ import "./index.css"
 
 class App extends Component {
   constructor() {
-    super(); //calls constructer method on component
+    super(); //calls constructor method on component
 
     this.state = {
       monsters: [],
@@ -50,3 +50,22 @@ class App extends Component {
 }
 
 export default App;
+
+/* 
+pure function: const pureFunc = (a,b) => a+b
+returns the same thing every time ,return is only dependend on the props that are
+passed in
+
+let c=3;
+const funcA = (a,b) => {
+  return a+b+c
+} not pure because c can change
+*/
+
+/*SIDEEFFECT
+let c=3
+const funcB = (a,b) => {
+  c=a+b
+  return a*b
+}
+*/
