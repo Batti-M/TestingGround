@@ -11,7 +11,7 @@ const CardContext = (props) => {
     fetch(url, {
       headers: {
         Authorization:
-          "563492ad6f91700001000001c82e8a9bc1ec4d6fa8a7363531aeecba",
+          "", //import env file for Auth
       },
     })
       .then((res) => res.json())
