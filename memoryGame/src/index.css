@@ -19,4 +19,40 @@ body{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  display: grid;
+  place-content: center;
+}
+.container{
+  width: 800px;
+  height: 630px;
+  border: 3px solid whitesmoke;
+  box-shadow: 4px 4px 4px rgb(126, 49, 49);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.card{
+  margin: 0;
+  width: 150px;
+  height: 150px;
+  border: 2px solid rgb(75, 69, 69);
+  background-size: cover;
+  z-index: -1;
+  transform: rotateY(0deg);
+  transition: all 250ms ease-in-out
+}
+
+.white{
+ position: relative;
+  background-color: antiquewhite;
+  margin: 0;
+  width: 150px;
+  height: 150px;
+  border: 2px solid rgb(75, 69, 69);
+  z-index: 2;
+}
+
+.displayNone{
+  display: none;
 }

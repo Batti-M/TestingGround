@@ -1,7 +1,8 @@
 import { useState } from 'react'
-
+import {Card} from './Card'
+import {CardContext} from "./CardContext"
 /*
-- api call with pictures , put into array
+- api call with pictures 
 -duplicate that array and concat both
 -display the array -> map
 -create a card
@@ -12,15 +13,20 @@ import { useState } from 'react'
 -put cards in player-array
 -implement function to see if there a still cards available
 if not, function for determine the winner
+-useRef for determing what to render, options or the game
 */
 
 function App() {
-  
+  const url="https://api.pexels.com/v1/"
 
   return (
-    <div className="App">
-      <h1> hello</h1>
-    </div>
+    <CardContext>
+      <div className="App">
+        <h1> hello <a href="https://www.pexels.com">Photos provided by Pexels</a></h1>
+        <Card />
+      </div>
+
+    </CardContext>
   )
 }
 
