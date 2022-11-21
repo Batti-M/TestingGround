@@ -1,13 +1,12 @@
-import { useState } from 'react'
+import { useState } from "react";
+import "./categories.styles.scss";
+import Directory from "./components/directory/directory-component";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+ 
   return (
-    <div className="App">
-      hi
-    </div>
-  )
+    <Directory />
+  );
 }
 
-export default App
+export default App;
