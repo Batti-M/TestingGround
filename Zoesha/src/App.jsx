@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./categories.styles.scss";
+import "/src/components/category.item/category-item.style.scss";
 import Directory from "./components/directory/directory-component";
 import Home from "./routes/home/home.component";
 import {Routes, Route, Outlet} from "react-router-dom"
