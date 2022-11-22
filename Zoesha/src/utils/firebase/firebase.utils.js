@@ -1,9 +1,12 @@
+import { Password } from "@mui/icons-material";
 import { initializeApp } from "firebase/app";
+
 import {
   getAuth,
   signInWithRedirect,
   signInWithPopup,
   GoogleAuthProvider,
+  createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
@@ -18,18 +21,23 @@ const firebaseConfig = {
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
-const provider = new GoogleAuthProvider();
+const provider = new GoogleAuthProvider(); //googleauthprovider is a class
 
 provider.setCustomParameters({
   prompt: "select_account",
 });
 
-export const auth = getAuth();
+export const auth = getAuth(); //auth to keep track if user is properly authenticated
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
+export const signInWithGoogleRedirect = () => {
+  signInWithRedirect(auth, provider);
+};
 
 export const database = getFirestore();
 
-export const createUserDocumentFromAuth = async (userAuth) => {
+export const createUserDocumentFromAuth = async (userAuth, additionalInformation={}) => {
+  if (!userAuth) return;
+
   const userDocRef = doc(database, "users", userAuth.uid);
   console.log(userDocRef);
 
@@ -45,8 +53,9 @@ export const createUserDocumentFromAuth = async (userAuth) => {
         displayName,
         email,
         createdAt,
+        ...additionalInformation
       });
-    } catch {
+    } catch(error) {
       console.log("error creating user", error.message);
     }
   }
@@ -54,4 +63,10 @@ export const createUserDocumentFromAuth = async (userAuth) => {
   //if it doesnt exist, create/set the document with data from userAuth
 
   return userDocRef;
+};
+
+export const createAuthUserWithEmailAndPassword = async (email, password) => {
+  if (!email || !password) return;
+
+  createUserWithEmailAndPassword(auth, email, password);
 };
