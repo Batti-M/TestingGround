@@ -34,8 +34,9 @@ const SignUpForm = () => {
       await createUserDocumentFromAuth(user, { displayName });
     } catch (error) {
       if (error.code === "auth/email-already-in-use")
-        console.log("email already in use", error);
+      console.log("email already in use", error);
     }
+    resetForm();
     //confirm password matches, see if user is authenticated, then create a user document
   };
 
@@ -85,7 +86,7 @@ const SignUpForm = () => {
           required
         />
 
-        <Button buttonType="google" type="submit">SIGN UP</Button>
+        <Button buttonType="inverted" type="submit">SIGN UP</Button>
       </form>
     </div>
   );
