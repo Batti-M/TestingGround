@@ -18,9 +18,10 @@
   
     .cart-items {
       height: 240px;
+      color: black;
       display: flex;
       flex-direction: column;
-      overflow: hidden;
+      overflow: scroll;
     }
   
     button {
