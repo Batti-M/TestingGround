@@ -9,6 +9,8 @@ import { getRedirectResult } from "firebase/auth";
 import SignUpForm from "../../components/sign-up-form/sign-up-form.component";
 import SignInForm from "../../components/sign-in/sign-in-form.component";
 import "./authentification.styles.scss"
+
+
 const Authentification = () => {
   const logGoogleUser = async () => {
     const { user } = await signInWithGooglePopup();

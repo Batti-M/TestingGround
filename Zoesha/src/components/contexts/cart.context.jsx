@@ -6,7 +6,10 @@ export const CartContext = createContext({
   setIsCartOpen: () => {},
   cartItems: [],
   addItemToCart: () => {},
-  cartCount: 0
+  removeItemFromCart: () => {},
+  cartCount: 0,
+  clearItemFromCart: () => {},
+  total: 0
 });
 
 /*
@@ -32,11 +35,29 @@ const addCartItem = (cartItems, productToAdd) => {
     
 };
 
+const removeCartItem = (cartItems,cartItemToRemove) => {
+  const sameProduct = cartItems.find((item) => item.id === cartItemToRemove.id);
+  
+  if(sameProduct.quantity === 1){
+    return cartItems.filter( item => item.id != cartItemToRemove.id)
+  }
+
+  return cartItems.map( item =>  item.id === cartItemToRemove.id ?
+    {...item, quantity: item.quantity-1}
+    : item
+      )
+}
+
+const clearItem = (cartItems, cartItemToClear) => {
+  return cartItems.filter( item => item.id != cartItemToClear.id)
+}
+
+
 const CartProvider = ({ children }) => {
   const [isCartOpen, setIsCartOpen] = useState(null);
   const [cartItems, setCartItems] = useState([]);
   const [cartCount, setCartCount] = useState(0);
-  
+  const [cartTotal,setCartTotal] = useState(0);
   
 
   useEffect( () => {
@@ -46,15 +67,31 @@ const CartProvider = ({ children }) => {
       
   },[cartItems])
   
+  
+  useEffect( () => {
+    const newCartTotal = cartItems.reduce( (total,cartItem) => 
+      { return total + cartItem.quantity * cartItem.price},0) ;
+      setCartTotal(newCartTotal);
+      
+  },[cartItems])
+  
 
   const addItemToCart = (productToAdd) => {
     setCartItems(addCartItem(cartItems, productToAdd));
    
   };
-  const value = { isCartOpen, setIsCartOpen, addItemToCart, cartItems, cartCount};
+  const removeItemFromCart = (cartItemToRemove) => {
+    setCartItems(removeCartItem(cartItems, cartItemToRemove))
+  }
+  const clearItemFromCart = (cartItemToClear) => {
+    setCartItems(clearItem(cartItems,cartItemToClear))
+  }
+
+  const value = { isCartOpen, setIsCartOpen,
+     addItemToCart,removeItemFromCart, clearItemFromCart,cartItems,cartTotal, cartCount};
   return (
     <CartContext.Provider value={value}>
-    {children}
+      {children}
     </CartContext.Provider>
 
   )

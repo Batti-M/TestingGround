@@ -10,7 +10,6 @@ const ProductCard = ({product}) => {
 
     const addItem = () => {
         addItemToCart(product);
-        console.log(cartCount)
     }
     
     return (
