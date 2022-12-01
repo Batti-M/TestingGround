@@ -1,21 +1,26 @@
 import { Component } from "react";
 import Card from "../Card";
+import {Monster} from "../../App"
 
-class CardList extends Component {
-  render() {
-    const { monsters } = this.props;
-    console.log("rendered from cardlist");
+
+type CardListProps = {
+  monsters: Monster[]
+}
+
+const CardList = ({monsters} : CardListProps) => {
+ 
+    
     return (
       <div className="card-list">
         {monsters.map((monster) => {
 
           return (
-            <Card monster={monster}/>
+            <Card monsters={monster}/>
           );
         })}
       </div>
     );
-  }
+
 }
 
 export { CardList };
