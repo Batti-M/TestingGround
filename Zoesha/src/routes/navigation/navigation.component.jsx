@@ -15,7 +15,7 @@ import { signOutUser } from "../../utils/firebase/firebase.utils";
 const Navigation = () => {
   const currentUser = useSelector(selectCurrentUser)
 
-  const {isCartOpen} = useSelector(selectIsCartOpen)
+  const isCartOpen = useSelector(selectIsCartOpen)
   
   return (
     <Fragment>
