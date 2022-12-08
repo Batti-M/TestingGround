@@ -4,9 +4,9 @@ import {useDispatch} from "react-redux"
 import { setCurrentUser } from "./store/user/user.action";
 import { onAuthStateChangedListener,
   createUserDocumentFromAuth,
-   signOutUser } from "./utils/firebase/firebase.utils";
-import "/src/components/directory-item/directory-item.styles.jsx";
-import Directory from "./components/directory/directory-component";
+    } from "./utils/firebase/firebase.utils";
+    
+import "/src/components/category-item/category-item.styles.jsx";
 import Home from "./routes/home/home.component";
 import {Routes, Route} from "react-router-dom"
 import Navigation from "./routes/navigation/navigation.component"
@@ -16,7 +16,7 @@ import Checkout from "./components/checkout/checkout.component";
 
 function App() {
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); //dispatch will never change
 
   useEffect( () => {
     const unsubscribe = onAuthStateChangedListener(

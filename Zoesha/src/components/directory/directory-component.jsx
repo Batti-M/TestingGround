@@ -1,4 +1,4 @@
-import CategoryItem from "/src/components/directory-item/directory-item.component";
+import CategoryItem from "/src/components/category-item/category-item.component";
 import "./directory.styles.scss"
 
 const categories = [
@@ -35,7 +35,7 @@ const categories = [
   ];
 
 const Directory = () => {
-    
+
    
     return( 
         <div className="directory-container">

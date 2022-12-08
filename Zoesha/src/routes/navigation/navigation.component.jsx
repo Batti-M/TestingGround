@@ -1,29 +1,27 @@
 import { Outlet } from "react-router-dom";
-import { Fragment, useContext } from "react";
+import { Fragment } from "react";
 import { useSelector } from "react-redux";
-import styled from "styled-components";
+
 
 import {NavigationContainer,LogoContainer,NavLinksContainer,NavLink} from "./navigation.styles.jsx"
 import CartIcon from "../../components/cart-icon/cart-icon.component"
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component"
 
-import {ReactComponent as CrownLogo} from "../../assets/crown.svg"
-import { UserContext } from "../../components/contexts/user.context";
-import { CartContext } from "../../components/contexts/cart.context";
+import { selectIsCartOpen } from "../../store/cart/cart.selector.js";
 import { selectCurrentUser } from "../../store/user/user.selector.js";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 
 
 const Navigation = () => {
-  const currentUser = selectCurrentUser
+  const currentUser = useSelector(selectCurrentUser)
 
-  const {isCartOpen,setIsCartOpen} = useContext( CartContext)
+  const {isCartOpen} = useSelector(selectIsCartOpen)
   
   return (
     <Fragment>
       <NavigationContainer>
         <LogoContainer to="/">
-          <CrownLogo className="logo" />
+          <span style={{fontSize:"4rem",fontStyle:"italic",color:"white",fontWeight:"bold"}}className="logo">ZOESHA</span>
         </LogoContainer>
 
         <NavLinksContainer>

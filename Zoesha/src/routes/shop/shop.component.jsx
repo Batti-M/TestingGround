@@ -1,23 +1,28 @@
-import Category from "../category/category.component";
+import { useEffect } from "react";
+import { Routes, Route } from "react-router-dom"
+import { useDispatch } from "react-redux"
+
+import { setCategories } from "../../store/categories/category.action";
+import { getCategoriesAndDocuments } from "../../utils/firebase/firebase.utils";
+
 import "./shop.styles.scss"
 import CategoriesPreview from "../categories-preview/categories-preview.component";
-import {Routes, Route} from "react-router-dom"
-import { useEffect } from "react";
-import { getCategoriesAndDocuments } from "../../utils/firebase/firebase.utils";
-import { setCategories } from "../../store/categories/category.action";
-import {useDispatch} from "react-redux"
+import Category from "../category/category.component";
+
 
 const Shop = () => {
 
-    const dispatch = useDispatch()
-    useEffect( () => {
-        const getCategoriesMap = async() => {
-        const categoriesArray = await getCategoriesAndDocuments();
+    const dispatch = useDispatch() 
+     // dispatch is a function that takes an action object and sends it to the reducer
 
-        dispatch(setCategories(categoriesArray))
-    }
-    getCategoriesMap();
-    },[])
+     useEffect(() => {
+        const getCategoriesMap = async () => {
+          const categoriesArray = await getCategoriesAndDocuments('categories');
+          dispatch(setCategories(categoriesArray));
+        };
+    
+        getCategoriesMap();
+      }, []);
    
     return(
         <Routes>
